@@ -1,11 +1,12 @@
-import React from "react";
 import "./Homepage.css";
-import { getAllArticles } from "../../utils/api";
+import ArticlesContainer from "../ArticleContainer/ArticleContainer";
 
 function Homepage() {
   return (
     <div>
-      <h1>Homepage</h1>
+      <ArticlesContainer />
     </div>
   );
 }
+
+export default Homepage;

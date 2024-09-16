@@ -1,0 +1,35 @@
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.article-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: scale(1.05);
+}
+
+.article-card h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.article-card p {
+  font-size: 1em;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,7 +3,7 @@ import ArticlesContainer from "../ArticleContainer/ArticleContainer";
 
 function Homepage() {
   return (
-    <div>
+    <div className="Homepage">
       <ArticlesContainer />
     </div>
   );

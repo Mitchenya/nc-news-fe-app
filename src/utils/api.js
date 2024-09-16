@@ -6,7 +6,12 @@ const NCNews = axios.create({
 
 export function getAllArticles() {
   return NCNews.get("/api/articles").then(({ data }) => {
-    console.log(data);
+    return data;
+  });
+}
+
+export function getArticleById(article_id) {
+  return NCNews.get(`/api/articles/${article_id}`).then(({ data }) => {
     return data;
   });
 }

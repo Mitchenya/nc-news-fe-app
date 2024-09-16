@@ -1,7 +1,7 @@
 import { getAllArticles } from "../../utils/api";
 import { useEffect, useState } from "react";
 import "./ArticleContainer.css";
-import ArticleCard from "./ArticleCard/ArticleCard";
+import ArticleCard from "../ArticleCard/ArticleCard";
 
 function ArticleContainer() {
   const [articles, setArticles] = useState([]);
@@ -16,8 +16,8 @@ function ArticleContainer() {
     <div className="article-container">
       {articles.map((article) => {
         return (
-          <div className="article-card">
-            <ArticleCard key={article.article_id} article={article} />
+          <div key={article.article_id} className="article-card">
+            <ArticleCard article={article} />
           </div>
         );
       })}

@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.header a {
+  position: absolute;
+  left: 20px;
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  text-align: center;
+}

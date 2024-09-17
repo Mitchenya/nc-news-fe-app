@@ -1,10 +1,8 @@
 import React from "react";
-import "../node_modules/font-awesome/css/font-awesome.min.css";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Homepage from "./components/Homepage/Homepage";
-import SingleArticle from "./components/SingleArticle/SingleArticle";
+import Header from "./components/Header/Header.jsx";
+import Homepage from "./components/Homepage/Homepage.jsx";
+import SingleArticle from "./components/SingleArticle/SingleArticle.jsx";
 import UserPage from "./components/Userpage/Userpage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 

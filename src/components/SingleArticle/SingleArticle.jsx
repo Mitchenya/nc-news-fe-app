@@ -2,6 +2,7 @@ import { getArticleById, getCommentsById } from "../../utils/api";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./SingleArticle.css";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -39,18 +40,60 @@ function SingleArticle() {
             <p>Comments: {comments.length}</p>
             <ul>
               {comments.map((comment) => (
-                <li key={comment.comment_id}>
-                  <p>{comment.body}</p>
-                  <p>
-                    <em>{comment.author}</em>
-                  </p>
-                </li>
+                <Comment key={comment.comment_id} comment={comment} />
               ))}
             </ul>
           </div>
         </>
       )}
     </div>
+  );
+}
+
+function Comment({ comment }) {
+  const [votes, setVotes] = useState(comment.votes);
+  const [userVote, setUserVote] = useState(0);
+
+  const handleUpvote = () => {
+    if (userVote === 1) {
+      setVotes(votes - 1);
+      setUserVote(0);
+    } else if (userVote === -1) {
+      setVotes(votes + 2);
+      setUserVote(1);
+    } else {
+      setVotes(votes + 1);
+      setUserVote(1);
+    }
+  };
+
+  const handleDownvote = () => {
+    if (userVote === -1) {
+      setVotes(votes + 1);
+      setUserVote(0);
+    } else if (userVote === 1) {
+      setVotes(votes - 2);
+      setUserVote(-1);
+    } else {
+      setVotes(votes - 1);
+      setUserVote(-1);
+    }
+  };
+
+  return (
+    <li>
+      <p>{comment.body}</p>
+      <p>
+        <em>{comment.author}</em>
+      </p>
+      <p>Votes: {votes}</p>
+      <button onClick={handleUpvote} disabled={userVote === 2}>
+        <FaThumbsUp />
+      </button>
+      <button onClick={handleDownvote} disabled={userVote === -2}>
+        <FaThumbsDown />
+      </button>
+    </li>
   );
 }
 

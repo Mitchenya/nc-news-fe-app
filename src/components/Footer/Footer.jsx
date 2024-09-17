@@ -1,6 +1,8 @@
+import "./Footer.css";
+
 function Footer() {
   return (
-    <div>
+    <div className="footer">
       <h3>
         <em>Created By Mitchell Shepherd @ Northcoders</em>
       </h3>

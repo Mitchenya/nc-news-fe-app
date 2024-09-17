@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.footer em {
+  color: #888;
+}

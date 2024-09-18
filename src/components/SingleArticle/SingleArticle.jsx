@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, getCommentsById, postComment } from "../../utils/api";
+import {
+  getArticleById,
+  getCommentsById,
+  postComment,
+  deleteComment,
+} from "../../utils/api";
 import "./SingleArticle.css";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
@@ -12,6 +17,7 @@ function SingleArticle() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,15 +39,15 @@ function SingleArticle() {
       });
   }, [article_id]);
 
-  const handleCommentSubmit = (event) => {
+  function handleCommentSubmit(event) {
     event.preventDefault();
     if (newComment.trim()) {
       setIsSubmitting(true);
       postComment(article_id, "happyamy2016", newComment)
         .then((postedComment) => {
           setComments((prevComments) => [
-            postedComment.comment,
             ...prevComments,
+            postedComment.comment,
           ]);
           setNewComment("");
         })
@@ -52,7 +58,22 @@ function SingleArticle() {
           setIsSubmitting(false);
         });
     }
-  };
+  }
+
+  function handleDelete(comment_id) {
+    const username = "happyamy2016";
+    deleteComment(comment_id, username)
+      .then(() => {
+        setComments((postedComments) =>
+          postedComments.filter((comment) => comment.comment_id !== comment_id)
+        );
+        setNotification("Comment deleted successfully");
+        setTimeout(() => setNotification(""), 3000);
+      })
+      .catch((error) => {
+        console.error("Failed to delete comment:", error);
+      });
+  }
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Something went wrong...</p>;
@@ -78,9 +99,14 @@ function SingleArticle() {
             <p>Comments: {comments.length}</p>
             <ul>
               {comments.map((comment) => (
-                <Comment key={comment.comment_id} comment={comment} />
+                <Comment
+                  key={comment.comment_id}
+                  comment={comment}
+                  onDelete={handleDelete}
+                />
               ))}
             </ul>
+            {notification && <div className="notification">{notification}</div>}
             <form onSubmit={handleCommentSubmit} className="comment-form">
               <textarea
                 value={newComment}
@@ -100,11 +126,10 @@ function SingleArticle() {
   );
 }
 
-function Comment({ comment }) {
+function Comment({ comment, onDelete }) {
   const [votes, setVotes] = useState(comment.votes);
   const [userVote, setUserVote] = useState(0);
-
-  const handleUpvote = () => {
+  function handleUpvote() {
     if (userVote === 1) {
       setVotes(votes - 1);
       setUserVote(0);
@@ -115,9 +140,9 @@ function Comment({ comment }) {
       setVotes(votes + 1);
       setUserVote(1);
     }
-  };
+  }
 
-  const handleDownvote = () => {
+  function handleDownvote() {
     if (userVote === -1) {
       setVotes(votes + 1);
       setUserVote(0);
@@ -128,7 +153,7 @@ function Comment({ comment }) {
       setVotes(votes - 1);
       setUserVote(-1);
     }
-  };
+  }
 
   return (
     <li>
@@ -151,6 +176,14 @@ function Comment({ comment }) {
       >
         <FaThumbsDown />
       </button>
+      {comment.author === "happyamy2016" && (
+        <button
+          onClick={() => onDelete(comment.comment_id)}
+          className="delete-button"
+        >
+          Delete
+        </button>
+      )}
     </li>
   );
 }

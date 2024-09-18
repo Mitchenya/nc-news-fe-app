@@ -17,7 +17,7 @@ function ArticleContainer() {
       {articles.map((article) => {
         return (
           <div key={article.article_id} className="article-card">
-            <ArticleCard article={article} />
+            <ArticleCard article={article} article_id={article.article_id} />
           </div>
         );
       })}

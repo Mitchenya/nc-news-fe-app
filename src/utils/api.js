@@ -21,3 +21,18 @@ export function getCommentsById(article_id) {
     return data;
   });
 }
+
+export function updateArticleVotes(article_id, voteChange) {
+  return NCNews.patch(`api/articles/${article_id}`, {
+    inc_votes: voteChange,
+  });
+}
+
+export function postComment(article_id, username, body) {
+  return NCNews.post(`api/articles/${article_id}/comments`, {
+    username,
+    body,
+  }).then((response) => {
+    return response.data;
+  });
+}

@@ -1,6 +1,6 @@
-import { getArticleById, getCommentsById } from "../../utils/api";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getArticleById, getCommentsById, postComment } from "../../utils/api";
 import "./SingleArticle.css";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
@@ -8,16 +8,54 @@ function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((data) => {
-      setArticle(data.article);
-    });
+    setIsLoading(true);
+    setIsError(false);
 
-    getCommentsById(article_id).then((data) => {
-      setComments(data.comments);
-    });
+    getArticleById(article_id)
+      .then((data) => {
+        setArticle(data.article);
+        return getCommentsById(article_id);
+      })
+      .then((data) => {
+        setComments(data.comments);
+      })
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [article_id]);
+
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
+    if (newComment.trim()) {
+      setIsSubmitting(true);
+      postComment(article_id, "happyamy2016", newComment)
+        .then((postedComment) => {
+          setComments((prevComments) => [
+            postedComment.comment,
+            ...prevComments,
+          ]);
+          setNewComment("");
+        })
+        .catch((error) => {
+          console.error("Failed to post comment:", error);
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    }
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Something went wrong...</p>;
 
   return (
     <div className="article-list">
@@ -31,7 +69,7 @@ function SingleArticle() {
             <img
               className="article-img"
               src={article.article_img_url}
-              alt="Lots of food being displayed upon a wooden table"
+              alt="Article illustration"
             />
           )}
           <p>{article.body}</p>
@@ -43,6 +81,18 @@ function SingleArticle() {
                 <Comment key={comment.comment_id} comment={comment} />
               ))}
             </ul>
+            <form onSubmit={handleCommentSubmit} className="comment-form">
+              <textarea
+                value={newComment}
+                onChange={(event) => setNewComment(event.target.value)}
+                placeholder="Write your comment here..."
+                rows="4"
+                required
+              />
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </button>
+            </form>
           </div>
         </>
       )}
@@ -87,10 +137,18 @@ function Comment({ comment }) {
         <em>{comment.author}</em>
       </p>
       <p>Votes: {votes}</p>
-      <button onClick={handleUpvote} disabled={userVote === 2}>
+      <button
+        onClick={handleUpvote}
+        style={{ color: userVote === 1 ? "green" : "black" }}
+        disabled={userVote === 1}
+      >
         <FaThumbsUp />
       </button>
-      <button onClick={handleDownvote} disabled={userVote === -2}>
+      <button
+        onClick={handleDownvote}
+        style={{ color: userVote === -1 ? "red" : "black" }}
+        disabled={userVote === -1}
+      >
         <FaThumbsDown />
       </button>
     </li>

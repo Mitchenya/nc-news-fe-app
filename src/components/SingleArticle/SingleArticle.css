@@ -94,20 +94,6 @@
   margin-right: 10px;
 }
 
-.comment-list button:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-}
-
-.comment-list button:hover:not(:disabled) {
-  background-color: #e2e8f0;
-}
-
-.comment-list button:active:not(:disabled) {
-  transform: scale(0.95);
-  background-color: #cfd4da;
-}
-
 .comment-list button svg {
   pointer-events: none;
 }

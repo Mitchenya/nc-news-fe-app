@@ -45,17 +45,3 @@ button {
   transition: background-color 0.3s, transform 0.2s;
   margin-right: 10px;
 }
-
-button:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background-color: #e2e8f0;
-}
-
-button:active:not(:disabled) {
-  transform: scale(0.95);
-  background-color: #cfd4da;
-}

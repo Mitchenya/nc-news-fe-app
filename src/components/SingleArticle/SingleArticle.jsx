@@ -140,14 +140,14 @@ function Comment({ comment }) {
       <button
         onClick={handleUpvote}
         style={{ color: userVote === 1 ? "green" : "black" }}
-        disabled={userVote === 1}
+        disabled={userVote === 2}
       >
         <FaThumbsUp />
       </button>
       <button
         onClick={handleDownvote}
         style={{ color: userVote === -1 ? "red" : "black" }}
-        disabled={userVote === -1}
+        disabled={userVote === -2}
       >
         <FaThumbsDown />
       </button>

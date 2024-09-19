@@ -8,6 +8,7 @@ import {
 } from "../../utils/api";
 import "./SingleArticle.css";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { Navigate } from "react-router-dom";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -18,6 +19,7 @@ function SingleArticle() {
   const [isError, setIsError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notification, setNotification] = useState("");
+  const [noArticle, setNoArticle] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,8 +27,13 @@ function SingleArticle() {
 
     getArticleById(article_id)
       .then((data) => {
-        setArticle(data.article);
-        return getCommentsById(article_id);
+        if (data.article) {
+          setNoArticle(false);
+          setArticle(data.article);
+          return getCommentsById(article_id);
+        } else {
+          setNoArticle(true);
+        }
       })
       .then((data) => {
         setComments(data.comments);
@@ -39,6 +46,9 @@ function SingleArticle() {
       });
   }, [article_id]);
 
+  if (noArticle) {
+    return <Navigate to="/404" />;
+  }
   function handleCommentSubmit(event) {
     event.preventDefault();
     if (newComment.trim()) {

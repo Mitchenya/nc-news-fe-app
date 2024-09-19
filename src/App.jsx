@@ -8,6 +8,7 @@ import UserPage from "./components/Userpage/Userpage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ArticleContainer from "./components/ArticleContainer/ArticleContainer.jsx";
 import { checkOnlineStatus } from "./utils/api.js";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 checkOnlineStatus();
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/football" element={<ArticleContainer />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/404" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>

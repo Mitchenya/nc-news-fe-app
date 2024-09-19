@@ -42,3 +42,12 @@ export function deleteComment(comment_id) {
     return response.data.msg;
   });
 }
+
+export function checkOnlineStatus() {
+  if (!navigator.onLine) {
+    console.log("User is offline.");
+    return;
+  }
+  console.log("User is online");
+  return true;
+}

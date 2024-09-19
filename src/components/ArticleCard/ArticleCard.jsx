@@ -40,11 +40,22 @@ function ArticleCard({ article, article_id }) {
       });
   }
 
+  const formattedDate = new Date(article.created_at).toLocaleString("en-UK", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
   return (
     <div className="article-card" key={article_id}>
       <Link className="article-link" to={`/articles/${article.article_id}`}>
         <h1>{article.title}</h1>
         <p>Votes: {votes}</p>
+        <p>Comments: {article.comment_count}</p>
+        <p>Created On: {formattedDate}</p>
       </Link>
       <p>
         <em>Written By: {article.author}</em>

@@ -1,0 +1,45 @@
+.burger-icon {
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 10px;
+}
+
+.burger-icon:focus {
+  outline: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background-color: #f0f0f0;
+}
+
+.burger-menu {
+  position: relative;
+}
+
+.article-container {
+  position: relative;
+}

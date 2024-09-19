@@ -7,6 +7,9 @@ import SingleArticle from "./components/SingleArticle/SingleArticle.jsx";
 import UserPage from "./components/Userpage/Userpage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ArticleContainer from "./components/ArticleContainer/ArticleContainer.jsx";
+import { checkOnlineStatus } from "./utils/api.js";
+
+checkOnlineStatus();
 
 function App() {
   return (
@@ -17,7 +20,7 @@ function App() {
         <Route path="/cooking" element={<ArticleContainer />} />
         <Route path="/coding" element={<ArticleContainer />} />
         <Route path="/football" element={<ArticleContainer />} />
-        <Route path="user" element={<UserPage />} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
       <Footer />

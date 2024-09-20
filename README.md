@@ -1,7 +1,7 @@
 # NC News
 
 ## Description
-NC News is a full-stack application consisting of a frontend and backend. Both the frontend and backend are built using Node.js along with other technologies.
+NC News is a full-stack application consisting of a frontend and backend.
 
 View the site here - https://northcoders-frontend-application.netlify.app/
 View the frontend repo here - https://github.com/Mitchenya/nc-news-fe-app

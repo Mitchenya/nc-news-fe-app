@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# NC News
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+NC News is a full-stack application consisting of a frontend and backend. Both the frontend and backend are built using Node.js along with other technologies.
 
-## Available Scripts
+View the site here - https://northcoders-frontend-application.netlify.app/
+View the frontend repo here - https://github.com/Mitchenya/nc-news-fe-app
+View the backend repo here - https://github.com/Mitchenya/nc-news
 
-In the project directory, you can run:
+## Frontend Technologies Used
+- Node.js
+- JavaScript
+- React.js
+- React Routing
+- State management
+- HyperText Markup Language (HTML)
+- Cascading Style Sheets (CSS)
+- Axios library
+- Error handling mechanisms
+- Vite build tool
+- Controlled user interface components
+- Conditional content display
+- Web hosting services
+- Responsive layout design
+- Accessible user experience design
+- Optimistic UI rendering
 
-### `npm start`
+## Backend Technologies Used
+- Node.js
+- Express.js for handling API requests
+- PostgreSQL relational database management
+- node-postgres (pg) for database interaction
+- Git for version control and collaboration
+- Husky for managing git hooks
+- Axios for HTTP requests between server and client
+- Vite for fast build and development support
+- Error handling for server-side failures
+- GitHub for code hosting and pull request workflows
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+- Access All Articles
+- Sort By (Topic, Vote Count, Comment Count, Alphabetical and Date of Creation)
+- Post Comments 
+- Make Votes on All Articles and Comments
+- Share Unique URL's for Each Filter
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
+- Start by clicking the green code button and copying the HTTPS URL
+- Open your terminal and direct yourself to the folder you'd like to work in
+- Run the following command insisde your terminal:
+  git clone https://github.com/Mitchenya/nc-news-fe-app
+- Navigate to the project directory
+  cd nc-news-front-end
+  code .
+- Install npm and Node.js
+  Follow the instructions in the official documentation to install npm and Node.js
+  This project was built using Node.js v22.4.1.
+- Install project dependencies.
+- In your terminal run npm i
+- Set up the local server using Vite by running this code in your terminal
+  npm run dev
+- You should then see an output that includes a link like http://localhost:5173/
+- Click on the link to open the application in your browser
+- To stop hosting the app, press ctrl + c
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
